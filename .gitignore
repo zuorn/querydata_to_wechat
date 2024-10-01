@@ -1,7 +1,11 @@
 config.ini
 
-output
+.pytest_cache
 
-sql
+__pycache__
+
+output/趣味测评参与人员.xlsx
+
+sql/趣味测评参与人员.sql
 
 .idea
