@@ -1,7 +1,6 @@
 import configparser
 import time
 
-
 from utils.Wechat import send_wechat_msg, upload_file
 from utils.query_data import query_database, export_to_excel
 
@@ -18,23 +17,19 @@ def read_config():
     return config
 
 
-
-
-
 # 发送微信通知
 def send_file(task_name):
-    file_path = config[task_name]['export_data']
+    file_path = file_name
     name = config[task_name]['name']
     if file_path is None:
         print("找不到Excel文件，文件发送失败。")
         return None
     upload_file(key=config['weixin']['RoBot_key'], path=file_path)
-    
+
     time.sleep(0.5)  # 等待0.5秒,确保文件上传成功后再发送微信通知
-    
+
     send_wechat_msg(key=config['weixin']['RoBot_key'], information=f"✅{name}数据已导出，请查收！")
     print("文件和通知发送成功。")
-
 
 
 if __name__ == "__main__":
@@ -46,9 +41,6 @@ if __name__ == "__main__":
         print("配置文件读取失败，程序退出。")
     else:
 
-           
         df = query_database(config, task_name)
         file_name = export_to_excel(df, config, task_name)
         send_file(task_name)
-
-

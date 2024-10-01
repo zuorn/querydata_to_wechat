@@ -1,7 +1,6 @@
 import configparser
 
 
-
 def read_config():
     config = configparser.ConfigParser()
     try:
@@ -12,17 +11,16 @@ def read_config():
         return None
     return config
 
+
 def test():
     db_name = config['task']['db']
     print(db_name)
 
     db_config = config[db_name]
-  
-    print(db_config)
 
+    print(db_config)
 
 
 if __name__ == "__main__":
     config = read_config()
     test()
-

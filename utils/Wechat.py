@@ -1,5 +1,6 @@
 import requests
 
+
 # 企微机器人代码封装
 
 
@@ -56,5 +57,3 @@ def upload_file(
         return r  # 返回请求状态
     except Exception as e:
         print("文件发送失败:", e)
-
-
