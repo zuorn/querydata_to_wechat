@@ -52,7 +52,7 @@ name = test
 ;执行 sql 数据库名称
 db = cloud2.0
 ;sql 查询语句路径
-sql = ./sql/test.sql
+sql = ./sql/任务1.sql
 
 ;导出excel文件路径
 export_data = ./output/test.xlsx

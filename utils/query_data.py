@@ -23,7 +23,6 @@ def query_database(config, task_name):
 
     with open(sql_path, 'r', encoding='utf-8') as file:
         sql = file.read()
-    # params = {'user_json : 182'}
     df = pd.read_sql(sql, engine)
     print("数据库查询成功。")
     return df
