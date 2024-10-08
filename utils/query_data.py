@@ -2,14 +2,14 @@ import os
 
 import pandas as pd
 from sqlalchemy import create_engine
+from utils.logs import  log
 
 
 # 查询数据代码封装
-
-
 def query_database(config, task_name):
     if config is None:
         print("配置文件读取失败，数据库查询失败。")
+        log.error("配置文件读取失败，数据库查询失败。")
         return None
 
     # 读取数据库配置
@@ -25,6 +25,7 @@ def query_database(config, task_name):
         sql = file.read()
     df = pd.read_sql(sql, engine)
     print("数据库查询成功。")
+    log.info("数据库查询成功。")
     return df
 
 
@@ -32,6 +33,7 @@ def query_database(config, task_name):
 def export_to_excel(df, config, task_name):
     if df is None:
         print("数据库查询结果为空，Excel文件导出失败。")
+        log.error("数据库查询结果为空，Excel文件导出失败。")
         return None
     # 指定导出目录
     output_directory = 'output'
@@ -47,5 +49,6 @@ def export_to_excel(df, config, task_name):
         os.remove(file_name)
 
     df.to_excel(file_name, index=False)
-    print(f"Excel文件： {file_name} 导出成功。")
+    print(f"导出Excel文件： {file_name} 成功。")
+    log.info(f"导出Excel文件： {file_name} 成功。")
     return file_name

@@ -1,0 +1,8 @@
+configparser
+time
+logging
+datetime
+os
+pandas
+sqlalchemy
+requests

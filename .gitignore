@@ -1,11 +1,6 @@
-config.ini
 
 .pytest_cache
 
 __pycache__
-
-output
-
-sql
 
 .idea

@@ -1,5 +1,7 @@
 import requests
 
+from utils.logs import  log
+
 
 # 企微机器人代码封装
 
@@ -27,10 +29,13 @@ def send_wechat_msg(
         # 注意：json=mBody  必须用json
         response = requests.post(url=url, json=mbody, headers=mheader)
         json_res = response.json()  # 返回转为json
-        print(f"微信发送成功:\n{information}" if json_res['errcode'] == 0 else
-              f"发送失败,参数错误:{json_res['errcode']}\n详情查询:{json_res['errmsg'].split(',')[3][14:]}")
+        print(f"微信发送成功:{information}" if json_res['errcode'] == 0 else
+              f"发送失败,参数错误:{json_res['errcode']}详情查询:{json_res['errmsg'].split(',')[3][14:]}")
+        log.info(f"微信发送成功:{information}" if json_res[
+                                                        'errcode'] == 0 else f"发送失败,参数错误:{json_res['errcode']}详情查询:{json_res['errmsg'].split(',')[3][14:]}")
     except Exception as e:
-        print("发送微信失败:", e)
+        print("发送微信消息失败:", e)
+        log.error("发送微信消息失败:", e)
 
 
 # 上传文件
@@ -54,6 +59,8 @@ def upload_file(
         data = {"msgtype": "file", "file": {"media_id": media_id}}  # post json
         r = requests.post(url=wx_url, json=data)  # post请求消息
         print("文件上传成功" if r.status_code == 200 else "上传错误")
+        # log.info("文件上传成功" if r.status_code == 200 else "上传错误")
         return r  # 返回请求状态
     except Exception as e:
         print("文件发送失败:", e)
+        log.error("文件发送失败：",e)
