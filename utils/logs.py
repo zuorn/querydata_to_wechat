@@ -13,7 +13,7 @@ class Logger:
             os.makedirs('logs')
 
         # 获取当前时间并格式化为字符串
-        current_time = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        current_time = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
         log_file_name = f'logs/{current_time}.log'
 
         # 设置文件处理程序，指定编码为 utf-8
