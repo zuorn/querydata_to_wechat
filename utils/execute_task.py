@@ -1,28 +1,9 @@
-import configparser
 import time
 
 from utils.Wechat import send_wechat_msg, upload_file
+from utils.logs import log
 from utils.query_data import query_database, export_to_excel
-from utils.logs import  log
-
-
-
-# 检查配置文件是否正确读取
-def read_config():
-    config = configparser.ConfigParser()
-    try:
-        config.read('config.ini', encoding='utf-8')
-        print("配置文件读取成功。")
-        log.info("配置文件读取成功。")
-    except UnicodeDecodeError:
-        print("配置文件解码错误。请确保它是UTF-8格式。")
-        log.error("配置文件解码错误。请确保它是UTF-8格式。")
-        return None
-    return config
-
-
-# 读取配置文件
-config = read_config()
+from utils.read_config import config
 
 
 # 倒计时函数
@@ -89,7 +70,7 @@ def task_names_to_list():
 
     log.info(f"开始执行任务: {task_names}")
     log.info("-----------------------------------")
-    
+
     for task_name in task_names:
         execute_task(task_name)
         print(task_name + "执行完成。")
