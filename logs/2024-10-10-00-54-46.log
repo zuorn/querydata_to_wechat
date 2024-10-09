@@ -1,0 +1,26 @@
+2024-10-10 00:54:47,115 - TaskExecution - INFO - 配置文件读取成功。
+2024-10-10 00:54:47,115 - TaskExecution - INFO - 开始执行任务: ['task1', 'task2', 'task3']
+2024-10-10 00:54:47,115 - TaskExecution - INFO - -----------------------------------
+2024-10-10 00:54:47,115 - TaskExecution - INFO - 任务task1在截止日期2024-10-24之前，开始执行。
+2024-10-10 00:54:47,246 - TaskExecution - INFO - 数据库查询成功。
+2024-10-10 00:54:47,770 - TaskExecution - INFO - 导出Excel文件： output\任务1.xlsx 成功。
+2024-10-10 00:54:48,648 - TaskExecution - INFO - 倒计时: 2 秒
+2024-10-10 00:54:49,660 - TaskExecution - INFO - 倒计时: 1 秒
+2024-10-10 00:54:50,663 - TaskExecution - INFO - 2秒倒计时结束！
+2024-10-10 00:54:50,900 - TaskExecution - INFO - 微信发送成功:✅任务1数据已导出，请查收！
+2024-10-10 00:54:50,901 - TaskExecution - INFO - 文件和通知发送成功。任务名: task1
+2024-10-10 00:54:50,901 - TaskExecution - INFO - 倒计时: 5 秒
+2024-10-10 00:54:51,903 - TaskExecution - INFO - 倒计时: 4 秒
+2024-10-10 00:54:52,907 - TaskExecution - INFO - 倒计时: 3 秒
+2024-10-10 00:54:53,911 - TaskExecution - INFO - 倒计时: 2 秒
+2024-10-10 00:54:54,921 - TaskExecution - INFO - 倒计时: 1 秒
+2024-10-10 00:54:55,936 - TaskExecution - INFO - 5秒倒计时结束！
+2024-10-10 00:54:55,936 - TaskExecution - INFO - task1执行完成。
+2024-10-10 00:54:55,936 - TaskExecution - INFO - -----------------------------------
+2024-10-10 00:54:55,936 - TaskExecution - INFO - 任务task2在截止日期2024-10-07之后，跳过执行。
+2024-10-10 00:54:55,936 - TaskExecution - INFO - task2执行完成。
+2024-10-10 00:54:55,937 - TaskExecution - INFO - -----------------------------------
+2024-10-10 00:54:55,937 - TaskExecution - INFO - 任务task3没有指定截止日期，跳过执行。
+2024-10-10 00:54:55,937 - TaskExecution - INFO - task3执行完成。
+2024-10-10 00:54:55,937 - TaskExecution - INFO - -----------------------------------
+2024-10-10 00:54:55,937 - TaskExecution - INFO - 共执行3个任务，分别为：['task1', 'task2', 'task3']。
