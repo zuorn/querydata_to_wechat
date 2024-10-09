@@ -61,9 +61,25 @@ def execute_task(task_name):
             else:
                 print(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
                 log.info(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
+
+        # 读取任务配置的执行日期
+        elif 'execution_date' in config[task_name]:
+            execution_dates = config[task_name]['execution_date'].split(',')
+            current_date = time.strftime("%Y-%m-%d", time.localtime())
+            
+            # 如果当前日期在执行日期列表中，执行任务
+            if current_date in execution_dates:
+                print(f"任务{task_name}在执行日期{current_date}，开始执行。")
+                log.info(f"任务{task_name}在执行日期{current_date}，开始执行。")
+                df = query_database(config, task_name)
+                file_name = export_to_excel(df, config, task_name)
+                send_file(task_name, file_name)
+            else:
+                print(f"任务{task_name}不在执行日期{current_date}，跳过执行。")
+                log.info(f"任务{task_name}不在执行日期{current_date}，跳过执行。")
         else:
-            print(f"任务{task_name}没有指定截止日期，跳过执行。")
-            log.info(f"任务{task_name}没有指定截止日期，跳过执行。")
+            print(f"任务{task_name}没有指定截止日期或执行日期，跳过执行。")
+            log.info(f"任务{task_name}没有指定截止日期或执行日期，跳过执行。")
 
 
 # 读取运行的任务
