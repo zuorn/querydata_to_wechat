@@ -4,3 +4,8 @@
 __pycache__
 
 .idea
+
+./utils/.pytest_cache
+./utils/__pycache__
+
+.venv

@@ -1,3 +1,1 @@
-
-SELECT *
-FROM `director_process`;
+SELECT * FROM `cloud2.0`.`blade_region`

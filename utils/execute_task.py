@@ -1,28 +1,9 @@
-import configparser
 import time
 
 from utils.Wechat import send_wechat_msg, upload_file
+from utils.logs import log
 from utils.query_data import query_database, export_to_excel
-from utils.logs import  log
-
-
-
-# 检查配置文件是否正确读取
-def read_config():
-    config = configparser.ConfigParser()
-    try:
-        config.read('config.ini', encoding='utf-8')
-        print("配置文件读取成功。")
-        log.info("配置文件读取成功。")
-    except UnicodeDecodeError:
-        print("配置文件解码错误。请确保它是UTF-8格式。")
-        log.error("配置文件解码错误。请确保它是UTF-8格式。")
-        return None
-    return config
-
-
-# 读取配置文件
-config = read_config()
+from utils.read_config import config
 
 
 # 倒计时函数
@@ -65,20 +46,24 @@ def execute_task(task_name):
         log.error("配置文件读取失败，程序退出。")
     else:
         # 读取任务配置的截止日期
-        end_date = config[task_name]['end_date']
-        # 获取当前日期
-        current_date = time.strftime("%Y-%m-%d", time.localtime())
+        if 'end_date' in config[task_name]:
+            end_date = config[task_name]['end_date']
+            # 获取当前日期
+            current_date = time.strftime("%Y-%m-%d", time.localtime())
 
-        # 如果截止日期大于等于当前日期，执行任务
-        if end_date >= current_date:
-            print(f"任务{task_name}在截止日期{end_date}之前，开始执行。")
-            log.info(f"任务{task_name}在截止日期{end_date}之前，开始执行。")
-            df = query_database(config, task_name)
-            file_name = export_to_excel(df, config, task_name)
-            send_file(task_name, file_name)
+            # 如果截止日期大于等于当前日期，执行任务
+            if end_date >= current_date:
+                print(f"任务{task_name}在截止日期{end_date}之前，开始执行。")
+                log.info(f"任务{task_name}在截止日期{end_date}之前，开始执行。")
+                df = query_database(config, task_name)
+                file_name = export_to_excel(df, config, task_name)
+                send_file(task_name, file_name)
+            else:
+                print(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
+                log.info(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
         else:
-            print(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
-            log.info(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
+            print(f"任务{task_name}没有指定截止日期，跳过执行。")
+            log.info(f"任务{task_name}没有指定截止日期，跳过执行。")
 
 
 # 读取运行的任务
@@ -89,7 +74,7 @@ def task_names_to_list():
 
     log.info(f"开始执行任务: {task_names}")
     log.info("-----------------------------------")
-    
+
     for task_name in task_names:
         execute_task(task_name)
         print(task_name + "执行完成。")

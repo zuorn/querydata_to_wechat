@@ -2,6 +2,7 @@ import logging
 import os
 from datetime import datetime
 
+
 class Logger:
     def __init__(self, name, level=logging.INFO):
         self.logger = logging.getLogger(name)
@@ -35,6 +36,7 @@ class Logger:
 
     def critical(self, message):
         self.logger.critical(message)
+
 
 # 初始话日志对象
 log = Logger("TaskExecution")

@@ -2,7 +2,8 @@ import os
 
 import pandas as pd
 from sqlalchemy import create_engine
-from utils.logs import  log
+
+from utils.logs import log
 
 
 # 查询数据代码封装
