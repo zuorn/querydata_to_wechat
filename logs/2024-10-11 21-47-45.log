@@ -1,0 +1,47 @@
+2024-10-11 21:47:46,228 - TaskExecution - INFO - 配置文件读取成功。
+2024-10-11 21:47:46,614 - TaskExecution - INFO - 开始执行任务: ['task1', 'task2', 'task3']
+2024-10-11 21:47:46,614 - TaskExecution - INFO - -----------------------------------
+2024-10-11 21:47:46,614 - TaskExecution - INFO - 任务task1在执行日期2024-10-11，开始执行。
+2024-10-11 21:47:46,792 - TaskExecution - INFO - 数据库查询成功。
+2024-10-11 21:47:47,305 - TaskExecution - INFO - 导出Excel文件： output\任务1.xlsx 成功。
+2024-10-11 21:47:48,001 - TaskExecution - INFO - 🔧冻结首行成功
+2024-10-11 21:47:48,230 - TaskExecution - INFO - 🔧列名填充单元格颜色为绿色成功
+2024-10-11 21:47:48,292 - TaskExecution - INFO - 🔧设置自适应列宽成功
+2024-10-11 21:47:50,400 - TaskExecution - INFO - 🔧设置所有数据单元格的框线成功
+2024-10-11 21:47:51,726 - TaskExecution - INFO - 倒计时: 2 秒
+2024-10-11 21:47:52,729 - TaskExecution - INFO - 倒计时: 1 秒
+2024-10-11 21:47:53,744 - TaskExecution - INFO - 2秒倒计时结束！
+2024-10-11 21:47:53,993 - TaskExecution - INFO - 微信发送成功:✅任务1数据已导出，请查收！
+2024-10-11 21:47:53,995 - TaskExecution - INFO - 文件和通知发送成功。任务名: task1
+2024-10-11 21:47:53,995 - TaskExecution - INFO - 倒计时: 5 秒
+2024-10-11 21:47:55,008 - TaskExecution - INFO - 倒计时: 4 秒
+2024-10-11 21:47:56,010 - TaskExecution - INFO - 倒计时: 3 秒
+2024-10-11 21:47:57,019 - TaskExecution - INFO - 倒计时: 2 秒
+2024-10-11 21:47:58,031 - TaskExecution - INFO - 倒计时: 1 秒
+2024-10-11 21:47:59,036 - TaskExecution - INFO - 5秒倒计时结束！
+2024-10-11 21:47:59,039 - TaskExecution - INFO - task1执行完成。
+2024-10-11 21:47:59,039 - TaskExecution - INFO - -----------------------------------
+2024-10-11 21:47:59,040 - TaskExecution - INFO - 任务task2在截止日期2024-10-13之前，开始执行。
+2024-10-11 21:47:59,048 - TaskExecution - INFO - 数据库查询成功。
+2024-10-11 21:47:59,072 - TaskExecution - INFO - 导出Excel文件： output\任务2.xlsx 成功。
+2024-10-11 21:47:59,098 - TaskExecution - INFO - 🔧冻结首行成功
+2024-10-11 21:47:59,107 - TaskExecution - INFO - 🔧列名填充单元格颜色为绿色成功
+2024-10-11 21:47:59,107 - TaskExecution - INFO - 🔧设置自适应列宽成功
+2024-10-11 21:47:59,107 - TaskExecution - INFO - 🔧设置所有数据单元格的框线成功
+2024-10-11 21:47:59,792 - TaskExecution - INFO - 倒计时: 2 秒
+2024-10-11 21:48:00,794 - TaskExecution - INFO - 倒计时: 1 秒
+2024-10-11 21:48:01,799 - TaskExecution - INFO - 2秒倒计时结束！
+2024-10-11 21:48:02,175 - TaskExecution - INFO - 微信发送成功:✅任务2数据已导出，请查收！
+2024-10-11 21:48:02,175 - TaskExecution - INFO - 文件和通知发送成功。任务名: task2
+2024-10-11 21:48:02,175 - TaskExecution - INFO - 倒计时: 5 秒
+2024-10-11 21:48:03,181 - TaskExecution - INFO - 倒计时: 4 秒
+2024-10-11 21:48:04,188 - TaskExecution - INFO - 倒计时: 3 秒
+2024-10-11 21:48:05,203 - TaskExecution - INFO - 倒计时: 2 秒
+2024-10-11 21:48:06,215 - TaskExecution - INFO - 倒计时: 1 秒
+2024-10-11 21:48:07,221 - TaskExecution - INFO - 5秒倒计时结束！
+2024-10-11 21:48:07,221 - TaskExecution - INFO - task2执行完成。
+2024-10-11 21:48:07,221 - TaskExecution - INFO - -----------------------------------
+2024-10-11 21:48:07,221 - TaskExecution - INFO - 任务task3没有指定截止日期或执行日期，跳过执行。
+2024-10-11 21:48:07,222 - TaskExecution - INFO - task3执行完成。
+2024-10-11 21:48:07,222 - TaskExecution - INFO - -----------------------------------
+2024-10-11 21:48:07,222 - TaskExecution - INFO - 共执行3个任务，分别为：['task1', 'task2', 'task3']。

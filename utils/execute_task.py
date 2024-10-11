@@ -62,6 +62,7 @@ def execute_task(task_name):
                 log.info(f"任务{task_name}在截止日期{end_date}之前，开始执行。")
                 df = query_database(config, task_name)
                 file_name = export_to_excel(df, config, task_name)
+                exce_processing(file_name)
                 send_file(task_name, file_name)
             else:
                 print(f"任务{task_name}在截止日期{end_date}之后，跳过执行。")
@@ -86,7 +87,7 @@ def execute_task(task_name):
         else:
             print(f"任务{task_name}没有指定截止日期或执行日期，跳过执行。")
             log.info(f"任务{task_name}没有指定截止日期或执行日期，跳过执行。")
-
+            
 
 # 读取运行的任务
 def task_names_to_list():
