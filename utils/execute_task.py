@@ -4,6 +4,7 @@ from utils.Wechat import send_wechat_msg, upload_file
 from utils.logs import log
 from utils.query_data import query_database, export_to_excel
 from utils.read_config import config
+from utils.data_processing.exce_processing import exce_processing
 
 
 # 倒计时函数
@@ -14,6 +15,10 @@ def countdown(seconds):
         time.sleep(1)
     print(seconds, "秒倒计时结束！")
     log.info(f"{seconds}秒倒计时结束！")
+
+
+def data_processing():
+    exce_processing(file_path)
 
 
 # 发送微信通知
@@ -73,6 +78,7 @@ def execute_task(task_name):
                 log.info(f"任务{task_name}在执行日期{current_date}，开始执行。")
                 df = query_database(config, task_name)
                 file_name = export_to_excel(df, config, task_name)
+                exce_processing(file_name)
                 send_file(task_name, file_name)
             else:
                 print(f"任务{task_name}不在执行日期{current_date}，跳过执行。")
