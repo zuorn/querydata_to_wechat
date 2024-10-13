@@ -1,8 +1,8 @@
 import pandas as pd
-from openpyxl.styles import PatternFill, Border, Side
 from openpyxl import load_workbook
-from utils.logs import log
+from openpyxl.styles import PatternFill, Border, Side
 
+from utils.logs import log
 
 
 def exce_processing(file_path):
@@ -15,12 +15,11 @@ def exce_processing(file_path):
     """
     # 读取Excel文件
     df = pd.read_excel(file_path)
-    
+
     # 冻结首行
-    df.to_excel(file_path, index=False, header=True, freeze_panes=(1,1))
+    df.to_excel(file_path, index=False, header=True, freeze_panes=(1, 1))
     print('🔧冻结首行成功')
     log.info("🔧冻结首行成功")
-    
 
     # 加载工作簿
     wb = load_workbook(file_path)
@@ -43,9 +42,9 @@ def exce_processing(file_path):
     # 设置所有数据单元格的框线
     for row in ws.iter_rows(min_row=2):
         for cell in row:
-            cell.border = Border(left=Side(style='thin'), 
-                                 right=Side(style='thin'), 
-                                 top=Side(style='thin'), 
+            cell.border = Border(left=Side(style='thin'),
+                                 right=Side(style='thin'),
+                                 top=Side(style='thin'),
                                  bottom=Side(style='thin'))
     print('🔧设置所有数据单元格的框线成功')
     log.info("🔧设置所有数据单元格的框线成功")
@@ -57,6 +56,7 @@ def exce_processing(file_path):
         配置处理excel文件函数，包括：
         1. 
         """
+
 
 # 测试
 if __name__ == '__main__':

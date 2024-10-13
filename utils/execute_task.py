@@ -2,10 +2,10 @@ import time
 from datetime import datetime
 
 from utils.Wechat import send_wechat_msg, upload_file
-from utils.logs import log
-from utils.query_data import  export_to_excel, query_data
-from utils.read_config import config
 from utils.data_processing.exce_processing import exce_processing
+from utils.logs import log
+from utils.query_data import export_to_excel, query_data
+from utils.read_config import config
 
 
 # 倒计时函数
@@ -16,6 +16,7 @@ def countdown(seconds):
         time.sleep(1)
     print(seconds, "秒倒计时结束！")
     log.info(f"{seconds}秒倒计时结束！")
+
 
 # Excel 数据处理函数
 def data_processing():
@@ -33,6 +34,8 @@ def send_file(task_name, file_path):
     # 上传文件到企业微信
     rebot = config[task_name]['Robot']
     upload_file(key=config[rebot]['RoBot_key'], path=file_path)
+    print(f"✅文件：{file_path} 发送成功！")
+    log.info(f"✅文件：{file_path} 发送成功！")
 
     # 等待2秒,确保文件上传成功后再发送微信通知
     countdown(2)
@@ -45,14 +48,12 @@ def send_file(task_name, file_path):
     countdown(5)
 
 
-
 # 查询数据库并返回查询结果，发送微信配置模板通知
 def queries(task_name):
-
     # 读取数据库配置
     db_name = config[task_name]['db']
     database_config = config[db_name]
-    
+
     all_messages = []
 
     for query in config[task_name]['queries']:
@@ -64,10 +65,8 @@ def queries(task_name):
     return "\n".join(all_messages)
 
 
-
 # 查询数据库并导出Excel文件发送微信通知
 def execute_task_run(task_name):
-
     # 读取数据库配置
     db_name = config[task_name]['db']
     database_config = config[db_name]
@@ -84,6 +83,8 @@ def execute_task_run(task_name):
         rebot = config[task_name]['Robot']
         send_wechat_msg(key=config[rebot]['RoBot_key'], information=f"{queries_messages}\n✅{name}数据已导出，请查收！")
 
+        # 每个任务执行完成后等待5秒
+        countdown(5)
 
 
     else:
@@ -96,8 +97,6 @@ def execute_task_run(task_name):
         file_name = export_to_excel(df, config, task_name)
         exce_processing(file_name)
         send_file(task_name, file_name)
-
-
 
 
 #  任务执行函数
@@ -130,7 +129,7 @@ def execute_task(task_name):
         elif 'execution_date' in config[task_name]:
             execution_dates = config[task_name]['execution_date'].split(',')
             current_date = time.strftime("%Y-%m-%d", time.localtime())
-            
+
             # 如果当前日期在执行日期列表中，执行任务
             if current_date in execution_dates:
                 print(f"任务{task_name}在执行日期{current_date}，开始执行。")
@@ -142,7 +141,6 @@ def execute_task(task_name):
         else:
             print(f"任务{task_name}没有指定截止日期或执行日期，跳过执行。")
             log.info(f"任务{task_name}没有指定截止日期或执行日期，跳过执行。")
-
 
 
 # 读取运行的任务

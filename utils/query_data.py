@@ -8,16 +8,14 @@ from utils.logs import log
 
 # 查询数据库
 def query_data(database_config, sql_path):
-
-
     engine = create_engine(
         f"mysql+pymysql://{database_config['user']}:{database_config['password']}@{database_config['host']}/{database_config['database']}")
 
     with open(sql_path, 'r', encoding='utf-8') as file:
         sql = file.read()
     df = pd.read_sql(sql, engine)
-    print("数据库查询成功。")
-    log.info("数据库查询成功。")
+    print(f"{sql_path}数据库查询成功。")
+    log.info(f"{sql_path}数据库查询成功。")
     return df
 
 

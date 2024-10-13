@@ -1,10 +1,9 @@
-import yaml
-from sqlalchemy import create_engine, text
 import pandas as pd
+import yaml
+from sqlalchemy import create_engine
+
+from utils.Wechat import send_wechat_msg
 from utils.read_config import config
-from utils.Wechat import send_wechat_msg, upload_file
-
-
 
 # 读取配置文件
 with open('config.yaml', 'r', encoding='utf-8') as file:
@@ -12,8 +11,6 @@ with open('config.yaml', 'r', encoding='utf-8') as file:
 
 
 def query_data(database_config, sql_path):
-
-
     engine = create_engine(
         f"mysql+pymysql://{database_config['user']}:{database_config['password']}@{database_config['host']}/{database_config['database']}")
 
@@ -23,7 +20,6 @@ def query_data(database_config, sql_path):
     # print("数据库查询成功。")
     # log.info("数据库查询成功。")
     return df
-
 
 
 def test():
@@ -39,6 +35,7 @@ def test():
         all_messages.append(message)
     return "\n".join(all_messages)
 
+
 def sen_msg():
     try:
         queries_messages = "sdfsd"
@@ -46,6 +43,6 @@ def sen_msg():
     except Exception as e:
         print(f"发送微信消息失败: {e}")
 
+
 if __name__ == '__main__':
     sen_msg()
-

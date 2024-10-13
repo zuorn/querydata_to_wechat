@@ -1,7 +1,8 @@
 import configparser
 
-from utils.logs import log
 import yaml
+
+from utils.logs import log
 
 
 # 检查配置文件是否正确读取
@@ -17,10 +18,12 @@ def read_config():
         return None
     return config
 
+
 def read_config_yaml():
     with open('config.yaml', 'r', encoding='utf-8') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     return config
+
 
 # 读取配置文件
 # config = read_config()
