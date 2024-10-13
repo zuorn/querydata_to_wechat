@@ -6,21 +6,12 @@ from sqlalchemy import create_engine
 from utils.logs import log
 
 
-# 查询数据代码封装
-def query_database(config, task_name):
-    if config is None:
-        print("配置文件读取失败，数据库查询失败。")
-        log.error("配置文件读取失败，数据库查询失败。")
-        return None
+# 查询数据库
+def query_data(database_config, sql_path):
 
-    # 读取数据库配置
-    db_name = config[task_name]['db']
-    database_config = config[db_name]
 
     engine = create_engine(
         f"mysql+pymysql://{database_config['user']}:{database_config['password']}@{database_config['host']}/{database_config['database']}")
-
-    sql_path = config[task_name]['sql']
 
     with open(sql_path, 'r', encoding='utf-8') as file:
         sql = file.read()

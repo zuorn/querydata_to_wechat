@@ -7,7 +7,11 @@ from utils.logs import log
 
 def exce_processing(file_path):
     """
-    读取excel文件，冻结首行，并将列名填充单元格颜色为绿色，设置自适应列宽，所有数据单元格设置所有框线
+    excel文件处理函数，包括：
+    1. 冻结首行
+    2. 将列名填充单元格颜色为绿色
+    3. 设置自适应列宽
+    4. 设置所有数据单元格设置所有框线
     """
     # 读取Excel文件
     df = pd.read_excel(file_path)
@@ -47,6 +51,12 @@ def exce_processing(file_path):
     log.info("🔧设置所有数据单元格的框线成功")
 
     wb.save(file_path)
+
+    def exce_processing_config():
+        """
+        配置处理excel文件函数，包括：
+        1. 
+        """
 
 # 测试
 if __name__ == '__main__':

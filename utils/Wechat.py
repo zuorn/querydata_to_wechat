@@ -29,9 +29,12 @@ def send_wechat_msg(
         # 注意：json=mBody  必须用json
         response = requests.post(url=url, json=mbody, headers=mheader)
         json_res = response.json()  # 返回转为json
-        print(f"微信发送成功:{information}" if json_res['errcode'] == 0 else
+
+        informations = information.replace("\n", "  ")  # 换行符替换成空格
+
+        print(f"微信发送成功:{informations}" if json_res['errcode'] == 0 else
               f"发送失败,参数错误:{json_res['errcode']}详情查询:{json_res['errmsg'].split(',')[3][14:]}")
-        log.info(f"微信发送成功:{information}" if json_res[
+        log.info(f"微信发送成功:{informations}" if json_res[
                                                       'errcode'] == 0 else f"发送失败,参数错误:{json_res['errcode']}详情查询:{json_res['errmsg'].split(',')[3][14:]}")
     except Exception as e:
         print("发送微信消息失败:", e)
